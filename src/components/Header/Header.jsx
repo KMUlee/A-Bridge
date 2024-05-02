@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <header className="w-full sticky top-0 left-0 flex justify-center items-center py-[20px] bg-white z-50">
+    <header className="w-full sticky top-0 left-0 flex justify-center items-center py-[20px] bg-white z-50 shadow-md">
       <div className="flex absolute left-[40px]">
         <img src="/logo/Logo.svg" alt="logo" />
       </div>

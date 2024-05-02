@@ -1,5 +1,5 @@
+import { Authenticator } from "@aws-amplify/ui-react";
 import { Button, TextField, Typography } from "@mui/material";
-
 const Home = () => {
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
@@ -9,21 +9,15 @@ const Home = () => {
         <Typography variant="h3">define product direction.</Typography>
       </div>
       <div className="w-full flex flex-col justify-center items-center gap-[16px] mt-[56px]">
-        <TextField
-          label="ID"
-          variant="filled"
-          size="medium"
-          sx={{ width: "30%" }}
-        />
-        <TextField
-          label="Password"
-          variant="filled"
-          size="medium"
-          sx={{ width: "30%" }}
-        />
-        <Button variant="contained" color="primary" size="large">
-          Login
-        </Button>
+        <Authenticator socialProviders={["google"]} />
+      </div>
+      <div className="max-w-2xl mt-[56px]">
+        <Typography variant="body1">
+          A-Bridge is a dedicated A/B testing platform for startups and
+          designers. It allows you to collect and analyze real-time user
+          feedback on prototype products. Anyone can easily participate and
+          provide diverse feedback.
+        </Typography>
       </div>
     </div>
   );
