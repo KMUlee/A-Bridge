@@ -8,9 +8,14 @@ const Home = () => {
         <Typography variant="h3">the easiest and fastest bridge to</Typography>
         <Typography variant="h3">define product direction.</Typography>
       </div>
-      <div className="w-full flex flex-col justify-center items-center gap-[16px] mt-[56px]">
-        <Authenticator socialProviders={["google"]} />
-      </div>
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        sx={{ mt: "56px" }}
+      >
+        Get Started
+      </Button>
       <div className="max-w-2xl mt-[56px]">
         <Typography variant="body1">
           A-Bridge is a dedicated A/B testing platform for startups and

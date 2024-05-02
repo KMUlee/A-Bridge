@@ -4,7 +4,6 @@ import { Suspense, lazy } from "react";
 import config from "./amplifyconfiguration.json";
 import { Amplify } from "aws-amplify";
 import "@aws-amplify/ui-react/styles.css";
-import { withAuthenticator } from "@aws-amplify/ui-react";
 
 Amplify.configure(config);
 
