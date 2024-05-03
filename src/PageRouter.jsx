@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import { Suspense, lazy } from "react";
 import config from "./amplifyconfiguration.json";
@@ -20,6 +20,7 @@ const PageRouter = () => {
             <Route path="test" element={<ABTestPage />} />
             <Route path="login" element={<LoginPage />} />
           </Route>
+          <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

@@ -1,7 +1,8 @@
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import { Button, Typography } from "@mui/material";
 
-const Home = () => {
+const Home = ({ user, signOut }) => {
+  console.log(user);
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <Typography variant="h4">Wellcome!!</Typography>

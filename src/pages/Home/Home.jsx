@@ -1,6 +1,8 @@
 import { Authenticator } from "@aws-amplify/ui-react";
 import { Button, TextField, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 const Home = () => {
+  const navigator = useNavigate();
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <div>
@@ -13,6 +15,7 @@ const Home = () => {
         color="primary"
         size="large"
         sx={{ mt: "56px" }}
+        onClick={() => navigator("/login")}
       >
         Get Started
       </Button>

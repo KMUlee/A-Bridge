@@ -1,13 +1,12 @@
-import { withAuthenticator } from "@aws-amplify/ui-react";
+import { Authenticator, withAuthenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 
-const Login = ({ user, signOut }) => {
+const Login = () => {
   return (
-    <>
-      <h1>Hello {user.username}</h1>
-      <button onClick={signOut}>Sign out</button>
-    </>
+    <div className="w-full h-full flex justify-center items-center">
+      <Authenticator />
+    </div>
   );
 };
 
-export default withAuthenticator(Login);
+export default Login;
