@@ -1,6 +1,6 @@
 {
   "auth": {
-    "abridgeaf36450a": {
+    "abridgeb096dd11": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -13,13 +13,9 @@
           "passwordPolicyMinLength": 8
         },
         "signupAttributes": [
-          "EMAIL",
-          "GENDER",
-          "NAME"
+          "EMAIL"
         ],
-        "socialProviders": [
-          "GOOGLE"
-        ],
+        "socialProviders": [],
         "usernameAttributes": [
           "EMAIL"
         ],
