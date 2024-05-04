@@ -1,12 +1,11 @@
-import { Authenticator, withAuthenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
+import { useEffect, useState } from "react";
 
 const Login = () => {
-  return (
-    <div className="w-full h-full flex justify-center items-center">
-      <Authenticator />
-    </div>
-  );
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {}, []);
+  return <div className="w-full h-full flex justify-center items-center"></div>;
 };
 
 export default Login;

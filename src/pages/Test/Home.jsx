@@ -1,8 +1,6 @@
-import { withAuthenticator } from "@aws-amplify/ui-react";
 import { Button, Typography } from "@mui/material";
 
-const Home = ({ user, signOut }) => {
-  console.log(user);
+const Home = () => {
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <Typography variant="h4">Wellcome!!</Typography>
@@ -24,4 +22,4 @@ const Home = ({ user, signOut }) => {
   );
 };
 
-export default withAuthenticator(Home);
+export default Home;

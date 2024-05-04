@@ -1,4 +1,3 @@
-import { Authenticator } from "@aws-amplify/ui-react";
 import { Button, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 const Home = () => {

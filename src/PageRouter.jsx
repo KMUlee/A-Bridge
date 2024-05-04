@@ -1,11 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import { Suspense, lazy } from "react";
-import config from "./amplifyconfiguration.json";
-import { Amplify } from "aws-amplify";
-import "@aws-amplify/ui-react/styles.css";
-
-Amplify.configure(config);
 
 const PageRouter = () => {
   const LadingPage = lazy(() => import("./pages/Home/Home"));
