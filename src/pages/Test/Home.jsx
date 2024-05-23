@@ -1,8 +1,12 @@
 import { Box, Button, Typography } from "@mui/material";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const [page, setPage] = useState(1);
+  const nav = useNavigate();
   return (
-    <div className="w-full h-full flex flex-col items-center py-32 px-44 gap-10">
+    <div className="w-full h-full flex flex-col items-center justify-center py-32 px-44 gap-10">
       <Typography variant="h4">Get started with your user testing</Typography>
       <Typography variant="h5" maxWidth={720}>
         You will perform two types of tests three times, and you will receive 10
@@ -28,7 +32,12 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Button variant="contained" color="primary" size="large">
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        onClick={() => nav(`/test/${page}`)}
+      >
         start!
       </Button>
     </div>

@@ -4,19 +4,12 @@ import ABTest from "./ABTest/ABTest";
 import UserFlowTest from "./UserFlowTest/UserFlowTest";
 
 const Testing = () => {
-  const [page, setPage] = useState({
-    cur: 1,
-    total: 3,
-  });
+  const [cur, setCur] = useState(0);
   const testList = [
-    <ABTest curPage={page.cur} totalPage={page.total} />,
-    <UserFlowTest curPage={page.cur} totalPage={page.total} />,
+    <ABTest setCur={setCur} />,
+    <UserFlowTest setCur={setCur} />,
   ];
-  return (
-    <div className="w-full h-full flex flex-col bg-[#F6F8F9]">
-      {testList[1]}
-    </div>
-  );
+  return <div className="w-full h-full bg-[#F6F8F9]">{testList[cur]}</div>;
 };
 
 export default Testing;
