@@ -1,20 +1,12 @@
-import { Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
 const Header = () => {
-  const navigator = useNavigate();
   return (
-    <header className="w-full sticky top-0 left-0 flex justify-center items-center py-[20px] bg-white z-50 shadow-md">
-      <div className="flex absolute left-[40px]">
-        <img src="/logo/Logo.svg" alt="logo" />
+    <header className="w-full sticky top-0 left-0 flex justify-between items-center py-[20px] px-10 bg-[#ECF1F5] z-50">
+      <div className="flex h-[30px]">
+        <img className="h-full" src="/logo/Logo.svg" alt="logo" height={30} />
       </div>
-      <div className="">
-        <ul className="flex gap-[16px]">
-          <li className="cursor-pointer" onClick={() => navigator("/test")}>
-            <Typography variant="subtitle1">Test</Typography>
-          </li>
-        </ul>
-      </div>
+      <Button>log in</Button>
     </header>
   );
 };
