@@ -1,6 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import { Suspense, lazy } from "react";
+import PrivateRoute from "./components/Layout/PrivateRoute";
 
 const PageRouter = () => {
   const LadingPage = lazy(() => import("./pages/Home/Home"));
@@ -13,8 +14,22 @@ const PageRouter = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<LadingPage />} />
-            <Route path="test" element={<ABTestPage />} />
-            <Route path="test/:id" element={<TestingPage />} />
+            <Route
+              path="test"
+              element={
+                <PrivateRoute>
+                  <ABTestPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="test/:id"
+              element={
+                <PrivateRoute>
+                  <TestingPage />
+                </PrivateRoute>
+              }
+            />
             <Route path="login" element={<LoginPage />} />
           </Route>
           <Route path="*" element={<Navigate replace to="/" />} />

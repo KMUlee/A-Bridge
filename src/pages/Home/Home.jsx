@@ -14,7 +14,7 @@ const Home = () => {
         color="primary"
         size="large"
         sx={{ mt: "56px" }}
-        onClick={() => navigator("/login")}
+        onClick={() => navigator("/test")}
       >
         Get Started
       </Button>
