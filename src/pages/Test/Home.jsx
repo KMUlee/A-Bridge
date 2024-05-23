@@ -2,7 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 
 const Home = () => {
   return (
-    <div className="w-full h-full flex flex-col items-center my-32 px-44 gap-10">
+    <div className="w-full h-full flex flex-col items-center py-32 px-44 gap-10">
       <Typography variant="h4">Get started with your user testing</Typography>
       <Typography variant="h5" maxWidth={720}>
         You will perform two types of tests three times, and you will receive 10

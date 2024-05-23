@@ -19,10 +19,12 @@ const ABTest = ({ title, curPage, totalPage }) => {
   };
   return (
     <div className="w-full h-full flex flex-col justify-center items-center gap-10 py-32">
-      <Typography variant="">{title}</Typography>
-      <Typography variant="">
-        ({`${curPage}/${totalPage} of testing`})
-      </Typography>
+      <div className="flex flex-col text-center">
+        <Typography variant="">{title}</Typography>
+        <Typography variant="">
+          ({`${curPage}/${totalPage} of testing`})
+        </Typography>
+      </div>
       <div className="w-full flex justify-center items-center gap-20">
         <div className="flex flex-col items-center">
           {selected.isSelected && selected.card === "A" ? (
