@@ -15,8 +15,10 @@ const Home = () => {
       <div className="w-full flex px-11 gap-8">
         <div className="flex flex-col flex-1 bg-[#F9FAFB] border border-[#B3BCC4] rounded-3xl py-8 items-center gap-6">
           <div className="w-full text-center">
-            <Typography>1. UI Test</Typography>
-            <Typography>Choosing the best UI for a page</Typography>
+            <Typography variant="h5">1. UI Test</Typography>
+            <Typography variant="h6">
+              Choosing the best UI for a page
+            </Typography>
           </div>
           <div>
             <img src="/images/testPage/test-1-left.svg" alt="test-ui" />
@@ -24,8 +26,10 @@ const Home = () => {
         </div>
         <div className="flex flex-col flex-1 bg-[#F9FAFB] border border-[#B3BCC4] rounded-3xl py-8 items-center gap-6">
           <div className="w-full text-center">
-            <Typography>1. UI Test</Typography>
-            <Typography>Choosing the best UI for a page</Typography>
+            <Typography variant="h5">2. User-flow Test</Typography>
+            <Typography variant="h6">
+              Choosing the best UX for a mission
+            </Typography>
           </div>
           <div>
             <img src="/images/testPage/test-1-right.svg" alt="test-ui" />

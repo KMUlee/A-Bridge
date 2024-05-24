@@ -1,9 +1,9 @@
-import { Button, TextField, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigator = useNavigate();
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center">
+    <div className="w-full h-full flex flex-col justify-center items-center py-32">
       <div>
         <Typography variant="h3">A-Bridge,</Typography>
         <Typography variant="h3">the easiest and fastest bridge to</Typography>

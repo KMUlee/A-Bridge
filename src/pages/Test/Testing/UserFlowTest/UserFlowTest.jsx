@@ -1,5 +1,6 @@
 import { Button, Typography } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const UserFlowOne = ({ setPage }) => {
   const [isSelected, setIsSelected] = useState(false);
@@ -75,6 +76,7 @@ const UserFlowOne = ({ setPage }) => {
 };
 
 const UserFlowTwo = () => {
+  const nav = useNavigate();
   return (
     <>
       <div className="w-full px-16 py-4 gap-2 flex flex-col">
@@ -94,16 +96,19 @@ const UserFlowTwo = () => {
           className="cursor-pointer"
           src="/images/testPage/priceCard-2-1.svg"
           alt="price-card"
+          onClick={() => nav("/result?mode=uf")}
         />
         <img
           className="cursor-pointer"
           src="/images/testPage/priceCard-2-2.svg"
           alt="price-card"
+          onClick={() => nav("/result?mode=uf")}
         />
         <img
           className="cursor-pointer"
           src="/images/testPage/priceCard-2-3.svg"
           alt="price-card"
+          onClick={() => nav("/result?mode=uf")}
         />
       </div>
     </>
