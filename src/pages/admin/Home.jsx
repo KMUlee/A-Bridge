@@ -26,7 +26,7 @@ const Home = () => {
     fetchEmbedUrl();
   }, []);
   return (
-    <div>
+    <div className="w-full h-full">
       {embedUrl ? (
         <iframe
           title="QuickSight Dashboard"
