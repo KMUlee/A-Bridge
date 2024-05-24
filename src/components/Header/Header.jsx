@@ -4,12 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const isLogin = Cookies.get("code");
-  console.log(isLogin);
+  const callBackUrl = process.env.REACT_APP_CALLBACK_URL;
   const nav = useNavigate();
   const handleOnClick = () => {
     if (!isLogin) {
-      window.location.href =
-        "https://a-bridge.auth.us-west-1.amazoncognito.com/login?client_id=6ahblt66ascvj6v3nk7k9s5rn3&response_type=code&scope=email+openid+phone&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Flogin";
+      window.location.href = `https://a-bridge.auth.us-west-1.amazoncognito.com/login?client_id=6ahblt66ascvj6v3nk7k9s5rn3&response_type=code&scope=email+openid+phone&redirect_uri=${callBackUrl}`;
     } else {
       Cookies.remove("code");
       nav("/");
