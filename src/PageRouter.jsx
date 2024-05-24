@@ -10,6 +10,8 @@ const PageRouter = () => {
   const LoginPage = lazy(() => import("./pages/Login/Login"));
   const TestingPage = lazy(() => import("./pages/Test/Testing/Testing"));
   const ResultPage = lazy(() => import("./pages/Result/Result"));
+  const AdminPage = lazy(() => import("./pages/admin/Home"));
+
   return (
     <BrowserRouter>
       <RecoilRoot>
@@ -33,6 +35,7 @@ const PageRouter = () => {
                   </PrivateRoute>
                 }
               />
+              <Route path="admin" element={<AdminPage />} />
               <Route path="result" element={<ResultPage />} />
               <Route path="login" element={<LoginPage />} />
             </Route>
