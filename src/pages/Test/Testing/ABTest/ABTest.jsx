@@ -13,37 +13,76 @@ const firehose = new AWS.Firehose();
 
 const streamName = process.env.REACT_APP_FIREHOSE_STREAM_NAME;
 
+function getRandomElement(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+const job = [
+  "Software",
+  "Designer",
+  "Student",
+  "Management",
+  "Marketing",
+  "Undefined",
+];
+const jobWeights = [2, 7, 8, 4, 5, 10];
+const locale = ["USA", "Canada", "China", "South Korea", "Germany"];
+const education = [
+  "High School",
+  "Undergraduate",
+  "Graduate(Master)",
+  "Graduate(PhD)",
+  "Undefined",
+];
+const gender = ["male", "female", "Undefined"];
+const birthdate = [10, 20, 30, 40, 50, 60, 70];
+const address = [
+  "California",
+  "New York",
+  "Seoul",
+  "Busan",
+  "Berlin",
+  "Undefined",
+];
+const careerPeriod = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+];
+
+const userId = 123; // userId는 사용자의 id 값으로 설정
+const delayTime = 1000; // delayTime은 지연 시간으로 설정
+
+const selectedBirthdate = getRandomElement(birthdate);
+const selectedButton = getRandomElement([1, 2]);
+
 const ABTest = () => {
   const nav = useNavigate();
   const handleClick = () => {
-    for (let i = 0; i < 100; i++) {
-      for (let j = 0; j < 10; j++) {
-        const log = {
-          test_id: i,
-          user_id: "a9a9b9ee-c0a1-70bf-a995-9bd7c392f743",
-          type: "UI",
-          current_seq: 1,
-          is_complete: true,
-          delay: 0.880313,
-          clicked_time: 17147849036850429,
-          selected_button: 1,
-          ip: "127.0.0.1",
-        };
-        const params = {
-          DeliveryStreamName: streamName,
-          Record: {
-            Data: JSON.stringify(log) + "\n", // 로그 데이터를 JSON 문자열로 변환하고 끝에 새 줄 추가
-          },
-        };
-        firehose.putRecord(params, (err, data) => {
-          if (err) {
-            console.error(err);
-          } else {
-            console.log(data);
-          }
-        });
+    const clickedTime = new Date().toISOString().slice(0, 19).replace("T", " ");
+    const params = {
+      testId: 1,
+      userId: userId,
+      type: "UI",
+      isComplete: true,
+      currentSeq: 1,
+      selectedButton: selectedButton,
+      delay: delayTime,
+      clickedTime: clickedTime,
+      ip: "127.0.0.1",
+      job: "Software",
+      birthdate: selectedBirthdate,
+      gender: getRandomElement(gender),
+      educationLevel: getRandomElement(education),
+      careerPeriod: getRandomElement(careerPeriod),
+      address: getRandomElement(address),
+      locale: getRandomElement(locale),
+    };
+    firehose.putRecord(params, (err, data) => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log(data);
       }
-    }
+    });
     nav("/result?mode=ui");
   };
   return (

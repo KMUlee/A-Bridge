@@ -1,11 +1,87 @@
 import { Button, Typography } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import * as AWS from "aws-sdk";
+
+AWS.config.update({
+  region: process.env.REACT_APP_AWS_REGION,
+  accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+});
+
+const firehose = new AWS.Firehose();
+
+function getRandomElement(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+const job = [
+  "Software",
+  "Designer",
+  "Student",
+  "Management",
+  "Marketing",
+  "Undefined",
+];
+const jobWeights = [2, 7, 8, 4, 5, 10];
+const locale = ["USA", "Canada", "China", "South Korea", "Germany"];
+const education = [
+  "High School",
+  "Undergraduate",
+  "Graduate(Master)",
+  "Graduate(PhD)",
+  "Undefined",
+];
+const gender = ["male", "female", "Undefined"];
+const birthdate = [10, 20, 30, 40, 50, 60, 70];
+const address = [
+  "California",
+  "New York",
+  "Seoul",
+  "Busan",
+  "Berlin",
+  "Undefined",
+];
+const careerPeriod = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+];
+
+const userId = 123; // userId는 사용자의 id 값으로 설정
+const delayTime = 1000; // delayTime은 지연 시간으로 설정
+
+const selectedBirthdate = getRandomElement(birthdate);
+const selectedButton = getRandomElement([1, 2]);
 
 const UserFlowOne = ({ setPage }) => {
   const [isSelected, setIsSelected] = useState(false);
 
-  const handleOnClick = () => {
+  const handleOnClick = async () => {
+    const clickedTime = new Date().toISOString().slice(0, 19).replace("T", " ");
+    const params = {
+      testId: 1,
+      userId: userId,
+      type: "UI",
+      isComplete: true,
+      currentSeq: 1,
+      selectedButton: selectedButton,
+      delay: delayTime,
+      clickedTime: clickedTime,
+      ip: "127.0.0.1",
+      job: "Software",
+      birthdate: selectedBirthdate,
+      gender: getRandomElement(gender),
+      educationLevel: getRandomElement(education),
+      careerPeriod: getRandomElement(careerPeriod),
+      address: getRandomElement(address),
+      locale: getRandomElement(locale),
+    };
+    firehose.putRecord(params, (err, data) => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log(data);
+      }
+    });
     setIsSelected(true);
   };
 
@@ -77,6 +153,36 @@ const UserFlowOne = ({ setPage }) => {
 
 const UserFlowTwo = () => {
   const nav = useNavigate();
+
+  const onClick = async () => {
+    const clickedTime = new Date().toISOString().slice(0, 19).replace("T", " ");
+    const params = {
+      testId: 2,
+      userId: userId,
+      type: "UX",
+      isComplete: true,
+      currentSeq: 1,
+      selectedButton: selectedButton,
+      delay: delayTime,
+      clickedTime: clickedTime,
+      ip: "127.0.0.1",
+      job: "Software",
+      birthdate: selectedBirthdate,
+      gender: getRandomElement(gender),
+      educationLevel: getRandomElement(education),
+      careerPeriod: getRandomElement(careerPeriod),
+      address: getRandomElement(address),
+      locale: getRandomElement(locale),
+    };
+    firehose.putRecord(params, (err, data) => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log(data);
+      }
+    });
+    nav("/result?mode=uf");
+  };
   return (
     <>
       <div className="w-full px-16 py-4 gap-2 flex flex-col">
@@ -96,19 +202,19 @@ const UserFlowTwo = () => {
           className="cursor-pointer"
           src="/images/testPage/priceCard-2-1.svg"
           alt="price-card"
-          onClick={() => nav("/result?mode=uf")}
+          onClick={onClick}
         />
         <img
           className="cursor-pointer"
           src="/images/testPage/priceCard-2-2.svg"
           alt="price-card"
-          onClick={() => nav("/result?mode=uf")}
+          onClick={onClick}
         />
         <img
           className="cursor-pointer"
           src="/images/testPage/priceCard-2-3.svg"
           alt="price-card"
-          onClick={() => nav("/result?mode=uf")}
+          onClick={onClick}
         />
       </div>
     </>
