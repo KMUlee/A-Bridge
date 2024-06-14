@@ -236,7 +236,7 @@ const UserFlowTest = () => {
     <div className="w-full h-full flex flex-col items-center justify-center py-16 gap-6">
       <div className="w-full text-center">
         <Typography variant="h5" fontWeight={400}>
-          UX Test ({`${page.curPage}/${page.totalPage} of testing`})
+          UX Test ({`${page.curPage} out of ${page.totalPage}`})
         </Typography>
         <Typography variant="h4" fontWeight={600} color={"#20A1D9"}>
           Click Sign up button for middle-priced plan.

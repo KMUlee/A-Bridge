@@ -58,7 +58,7 @@ const Result = () => {
           Congratulations, you've
         </Typography>
         <Typography variant="h3" fontWeight={600}>
-          completed all the tests and
+          completed the test and
         </Typography>
         <Typography variant="h3" fontWeight={600}>
           received{" "}
