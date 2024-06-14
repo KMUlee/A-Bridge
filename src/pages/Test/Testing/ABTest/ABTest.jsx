@@ -59,22 +59,27 @@ const ABTest = () => {
   const handleClick = () => {
     const clickedTime = new Date().toISOString().slice(0, 19).replace("T", " ");
     const params = {
-      testId: 1,
-      userId: userId,
-      type: "UI",
-      isComplete: true,
-      currentSeq: 1,
-      selectedButton: selectedButton,
-      delay: delayTime,
-      clickedTime: clickedTime,
-      ip: "127.0.0.1",
-      job: "Software",
-      birthdate: selectedBirthdate,
-      gender: getRandomElement(gender),
-      educationLevel: getRandomElement(education),
-      careerPeriod: getRandomElement(careerPeriod),
-      address: getRandomElement(address),
-      locale: getRandomElement(locale),
+      DeliveryStreamName: streamName,
+      Record: {
+        Data: JSON.stringify({
+          testId: 1,
+          userId: userId,
+          type: "UI",
+          isComplete: true,
+          currentSeq: 1,
+          selectedButton: selectedButton,
+          delay: delayTime,
+          clickedTime: clickedTime,
+          ip: "127.0.0.1",
+          job: "Software",
+          birthdate: selectedBirthdate,
+          gender: getRandomElement(gender),
+          educationLevel: getRandomElement(education),
+          careerPeriod: getRandomElement(careerPeriod),
+          address: getRandomElement(address),
+          locale: getRandomElement(locale),
+        }),
+      },
     };
     firehose.putRecord(params, (err, data) => {
       if (err) {

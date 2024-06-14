@@ -10,6 +10,7 @@ AWS.config.update({
 });
 
 const firehose = new AWS.Firehose();
+const streamName = process.env.REACT_APP_FIREHOSE_STREAM_NAME;
 
 function getRandomElement(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -58,22 +59,27 @@ const UserFlowOne = ({ setPage }) => {
   const handleOnClick = async () => {
     const clickedTime = new Date().toISOString().slice(0, 19).replace("T", " ");
     const params = {
-      testId: 1,
-      userId: userId,
-      type: "UI",
-      isComplete: true,
-      currentSeq: 1,
-      selectedButton: selectedButton,
-      delay: delayTime,
-      clickedTime: clickedTime,
-      ip: "127.0.0.1",
-      job: "Software",
-      birthdate: selectedBirthdate,
-      gender: getRandomElement(gender),
-      educationLevel: getRandomElement(education),
-      careerPeriod: getRandomElement(careerPeriod),
-      address: getRandomElement(address),
-      locale: getRandomElement(locale),
+      DeliveryStreamName: streamName,
+      Record: {
+        Data: JSON.stringify({
+          testId: 2,
+          userId: userId,
+          type: "UX",
+          isComplete: true,
+          currentSeq: 1,
+          selectedButton: selectedButton,
+          delay: delayTime,
+          clickedTime: clickedTime,
+          ip: "127.0.0.1",
+          job: "Software",
+          birthdate: selectedBirthdate,
+          gender: getRandomElement(gender),
+          educationLevel: getRandomElement(education),
+          careerPeriod: getRandomElement(careerPeriod),
+          address: getRandomElement(address),
+          locale: getRandomElement(locale),
+        }),
+      },
     };
     firehose.putRecord(params, (err, data) => {
       if (err) {
@@ -98,7 +104,6 @@ const UserFlowOne = ({ setPage }) => {
           className="cursor-pointer"
           src="/images/testPage/pricingCard-1-1.svg"
           alt="card-1"
-          onClick={handleOnClick}
         />
         <img
           className="cursor-pointer"
@@ -110,7 +115,6 @@ const UserFlowOne = ({ setPage }) => {
           className="cursor-pointer"
           src="/images/testPage/pricingCard-1-3.svg"
           alt="card-3"
-          onClick={handleOnClick}
         />
       </div>
       <div className="w-full px-10 py-4 flex flex-col items-center gap-2">
@@ -157,22 +161,27 @@ const UserFlowTwo = () => {
   const onClick = async () => {
     const clickedTime = new Date().toISOString().slice(0, 19).replace("T", " ");
     const params = {
-      testId: 2,
-      userId: userId,
-      type: "UX",
-      isComplete: true,
-      currentSeq: 1,
-      selectedButton: selectedButton,
-      delay: delayTime,
-      clickedTime: clickedTime,
-      ip: "127.0.0.1",
-      job: "Software",
-      birthdate: selectedBirthdate,
-      gender: getRandomElement(gender),
-      educationLevel: getRandomElement(education),
-      careerPeriod: getRandomElement(careerPeriod),
-      address: getRandomElement(address),
-      locale: getRandomElement(locale),
+      DeliveryStreamName: streamName,
+      Record: {
+        Data: JSON.stringify({
+          testId: 2,
+          userId: userId,
+          type: "UX",
+          isComplete: true,
+          currentSeq: 1,
+          selectedButton: selectedButton,
+          delay: delayTime,
+          clickedTime: clickedTime,
+          ip: "127.0.0.1",
+          job: "Software",
+          birthdate: selectedBirthdate,
+          gender: getRandomElement(gender),
+          educationLevel: getRandomElement(education),
+          careerPeriod: getRandomElement(careerPeriod),
+          address: getRandomElement(address),
+          locale: getRandomElement(locale),
+        }),
+      },
     };
     firehose.putRecord(params, (err, data) => {
       if (err) {
@@ -202,7 +211,6 @@ const UserFlowTwo = () => {
           className="cursor-pointer"
           src="/images/testPage/priceCard-2-1.svg"
           alt="price-card"
-          onClick={onClick}
         />
         <img
           className="cursor-pointer"
@@ -214,7 +222,6 @@ const UserFlowTwo = () => {
           className="cursor-pointer"
           src="/images/testPage/priceCard-2-3.svg"
           alt="price-card"
-          onClick={onClick}
         />
       </div>
     </>
@@ -228,10 +235,10 @@ const UserFlowTest = () => {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center py-16 gap-6">
       <div className="w-full text-center">
-        <Typography variant="h4" fontWeight={600}>
+        <Typography variant="h5" fontWeight={400}>
           UX Test ({`${page.curPage}/${page.totalPage} of testing`})
         </Typography>
-        <Typography variant="h5">
+        <Typography variant="h4" fontWeight={600} color={"#20A1D9"}>
           Click Sign up button for middle-priced plan.
         </Typography>
       </div>

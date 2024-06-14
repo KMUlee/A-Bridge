@@ -63,7 +63,7 @@ const Result = () => {
         <Typography variant="h3" fontWeight={600}>
           received{" "}
           <Box component={"span"} color={"primary.main"}>
-            2 cents
+            1 cents
           </Box>
           !
         </Typography>
@@ -71,9 +71,6 @@ const Result = () => {
       <div className="w-[720px]">
         <Typography variant="h4" fontWeight={600}>
           Your current credit: $0.82
-        </Typography>
-        <Typography variant="h4" fontWeight={600}>
-          You can get reimbursed from $1 or more.
         </Typography>
       </div>
       {mode === "ui" ? <UITest /> : <UFTest />}
