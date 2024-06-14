@@ -63,7 +63,7 @@ const Result = () => {
         <Typography variant="h3" fontWeight={600}>
           received{" "}
           <Box component={"span"} color={"primary.main"}>
-            1 cents
+            2 cents
           </Box>
           !
         </Typography>
